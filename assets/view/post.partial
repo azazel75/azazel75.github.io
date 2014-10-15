@@ -1,0 +1,26 @@
+{#  -*- coding: utf-8 -*- #}
+
+{% import 'comments_helper.tmpl' as comments %}
+{% import 'post_helper.tmpl' as helper %}
+{% import 'post_header.tmpl' as pheader %}
+
+<article class="post-{{ post.meta.type }} h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    {{ pheader.html_post_header(post, messages) }}
+    <div class="e-content entry-content" itemprop="articleBody text">
+    {{ post.text }}
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    {{ helper.html_tags(post) }}
+    {{ helper.html_pager(post, messages) }}
+    </nav>
+    </aside>
+    {% if not post.meta.nocomments and site_has_comments %}
+        <section class="comments">
+        <h2>{{ messages("Comments") }}</h2>
+        {{ comments.comment_form(post.abs_permalink, post.title, post.id_comments) }}
+        </section>
+    {% endif %}
+    {{ helper.mathjax_script(post) }}
+</article>
+{{ comments.comment_link_script() }}

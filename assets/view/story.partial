@@ -1,0 +1,23 @@
+{#  -*- coding: utf-8 -*- #}
+
+{% import 'post_helper.tmpl' as helper %}
+{% import 'post_header.tmpl' as pheader %}
+{% import 'comments_helper.tmpl' as comments %}
+
+
+<article class="storypage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    <header>
+        {{ pheader.html_title(post) }}
+        {{ pheader.html_translations(post, messages) }}
+    </header>
+    <div itemprop="articleBody text">
+    {{ post.text }}
+    </div>
+    {% if site_has_comments and enable_comments and not post.meta.nocomments %}
+        <section class="comments">
+        <h2>{{ messages("Comments") }}</h2>
+        {{ comments.comment_form(post.abs_permalink, post.meta.title, post.id_comments) }}
+        </section>
+    {% endif %}
+    {{ helper.mathjax_script(post) }}
+</article>

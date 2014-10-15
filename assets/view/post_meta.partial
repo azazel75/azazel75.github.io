@@ -1,0 +1,20 @@
+{#  -*- coding: utf-8 -*- #}
+
+{% import 'post_helper.tmpl' as helper %}
+
+{% if post.meta.keywords %}
+<meta name="keywords" content="{{ post.meta.keywords|e }}">
+{% endif %}
+{% if post.meta.description %}
+<meta name="description" itemprop="description" content="{{ post.meta.description }}">
+{% endif %}
+<meta name="author" content="{{ post.author }}">
+{% if post.prev_post %}
+    <link rel="prev" href="{{ post.prev_post.permalink }}" title="{{ post.prev_post.title }}" type="text/html">
+{% endif %}
+{% if post.next_post %}
+    <link rel="next" href="{{ post.next_post.permalink }}" title="{{ post.next_post.title }}" type="text/html">
+{% endif %}
+{{ helper.open_graph_metadata(post) }}
+{{ helper.twitter_card_information(post) }}
+{{ helper.meta_translations(post) }}

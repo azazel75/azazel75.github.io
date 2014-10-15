@@ -1,0 +1,38 @@
+{#  -*- coding: utf-8 -*- #}
+{% import 'post_helper.tmpl' as helper %}
+{% import 'comments_helper.tmpl' as comments %}
+
+{% macro html_title(post) %}
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="{{ post.permalink }}" class="u-url">{{ post.meta.title|e }}</a></h1>
+{% endmacro %}
+
+{% macro html_translations(post, messages) %}
+    {% if post.translated_to|length > 1 %}
+        <div class="metadata posttranslations translations">
+            <h3 class="posttranslations-intro">{{ messages("Also available in:") }}</h3>
+            {% for translation in post.translated_to %}
+                <p><a href="{{ translation.link }}" rel="alternate" hreflang="{{ translation.lang }}">{{ messages("LANGUAGE", langname) }}</a></p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro html_post_header(post, messages) %}
+    <header>
+        {{ html_title(post) }}
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">{{ post.author }}</span></p>
+            <p class="dateline"><a href="{{ post.permalink }}" rel="bookmark"><time class="published dt-published" datetime="{{ post.iso_date }}" itemprop="datePublished" title="{{ messages("Publication date") }}">{{ post.formatted_date }}</time></a></p>
+            {% if not post.meta.nocomments and site_has_comments %}
+                <p class="commentline">{{ comments.comment_link(post.permalink, post.id_comments) }}
+            {% endif %}
+            {% if post.meta.link %}
+                    <p><a href='{{ post.meta.link }}'>{{ messages("Original site") }}</a></p>
+            {% endif %}
+            {% if post.meta.description %}
+                <meta content="{{ post.meta.description }}" itemprop="description">
+            {% endif %}
+        </div>
+        {{ html_translations(post, messages) }}
+    </header>
+{% endmacro %}
