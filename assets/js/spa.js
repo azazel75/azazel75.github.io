@@ -42,9 +42,14 @@
 
             pushLinkToHistory: function(event) {
                 var href = event.target.getAttribute('href'),
-                    router = this.getOption('router');
+                    router = this.getOption('router'),
+                    testurl;
 
-                if (href.search(/^\//) == 0) {
+                if (href.search('#') > -1)
+                    testurl = href.substr(0, href.search('#'));
+                else
+                    testurl = href;
+                if (testurl !=  window.location.pathname) {
                     event.preventDefault();
                     router.navigate(href, {trigger: true});
                 }
