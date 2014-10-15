@@ -19,7 +19,7 @@
 
     function start(_, $, Backbone, Marionette, nunjucks, globals, models) {
         // Initialize nunjucks template system and plug it in inside Marionette
-        var template_env = nunjucks.configure('/assets/view', { autoescape: false });
+        var template_env = new nunjucks.Environment(new nunjucks.WebLoader('/assets/view', true));
         Marionette.TemplateCache.prototype.loadTemplate = function(templateId){
             return template_env.getTemplate(templateId);
         };
