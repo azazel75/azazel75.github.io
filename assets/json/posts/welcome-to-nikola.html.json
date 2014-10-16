@@ -4,6 +4,7 @@
   "meta": {
     "description": "",
     "tags": "nikola, python, demo, blog",
+    "keywords": "",
     "link": "http://getnikola.com",
     "date": "2012-03-30 23:00:00 UTC-03:00",
     "password": "",
@@ -12,15 +13,17 @@
     "nocomments": "",
     "author": "Roberto Alsina",
     "title": "Welcome to Nikola",
+    "enclosure": "",
     "template": "",
-    "type": "text"
+    "type": "text",
+    "annotations": ""
   },
   "sourcelink": "/posts/welcome-to-nikola.rst",
   "id": "/posts/welcome-to-nikola.html.json",
   "author": "Roberto Alsina",
   "use_in_feeds": true,
   "translated_to": [],
-  "text": "<div><div class=\"figure\">\n<a class=\"reference external image-reference\" href=\"http://farm1.staticflickr.com/138/352972944_4f9d568680_z.jpg?zz=1\"><img alt=\"Nikola Tesla Corner by nicwest, on Flickr\" class=\"thumbnail\" src=\"http://farm1.staticflickr.com/138/352972944_4f9d568680.jpg\"></a>\n</div>\n<p>If you can see this in a web browser, it means you have managed to\ninstall Nikola, ààààèèòòùùàà\nand build a site using it. Congratulations!</p>\n<ul class=\"simple\">\n<li>You can read the manual <a class=\"reference external\" href=\"/stories/handbook.html\">here</a></li>\n<li>You can learn more about Nikola at <a class=\"reference external\" href=\"http://getnikola.com\">http://getnikola.com</a></li>\n<li>You can see a demo photo gallery <a class=\"reference external\" href=\"/galleries/demo/index.html\">here</a></li>\n<li>Demo usage of listings <a class=\"reference external\" href=\"/stories/listings-demo.html\">here</a></li>\n<li>Demo of slideshows <a class=\"reference external\" href=\"/stories/slides-demo.html\">here</a></li>\n<li>Demo of Bootstrap <a class=\"reference external\" href=\"/stories/bootstrap-demo.html\">here</a></li>\n</ul>\n<p>Send feedback to <a class=\"reference external\" href=\"mailto:ralsina@netmanagers.com.ar\">ralsina@netmanagers.com.ar</a>!\nahahah</p></div>",
+  "text": "<div><div class=\"figure\">\n<a class=\"reference external image-reference\" href=\"http://farm1.staticflickr.com/138/352972944_4f9d568680_z.jpg?zz=1\"><img alt=\"Nikola Tesla Corner by nicwest, on Flickr\" class=\"thumbnail\" src=\"http://farm1.staticflickr.com/138/352972944_4f9d568680.jpg\"></a>\n</div>\n<p>If you can see this in a web browser, it means you have managed to\ninstall Nikola, ààààèèòòùùàà\nand build a site using it. Congratulations!</p>\n<ul class=\"simple\">\n<li>You can read the manual <a class=\"reference external\" href=\"../stories/handbook.html\">here</a></li>\n<li>You can learn more about Nikola at <a class=\"reference external\" href=\"http://getnikola.com\">http://getnikola.com</a></li>\n<li>You can see a demo photo gallery <a class=\"reference external\" href=\"../galleries/demo/index.html\">here</a></li>\n<li>Demo usage of listings <a class=\"reference external\" href=\"../stories/listings-demo.html\">here</a></li>\n<li>Demo of slideshows <a class=\"reference external\" href=\"../stories/slides-demo.html\">here</a></li>\n<li>Demo of Bootstrap <a class=\"reference external\" href=\"../stories/bootstrap-demo.html\">here</a></li>\n</ul>\n<p>Send feedback to <a class=\"reference external\" href=\"mailto:ralsina@netmanagers.com.ar\">ralsina@netmanagers.com.ar</a>!\nahahah</p></div>",
   "is_mathjax": false,
   "enable_comments": true,
   "tags": [
