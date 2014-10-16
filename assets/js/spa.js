@@ -32,11 +32,6 @@
             blog_data.post = data;
             return template.render(blog_data);
         };
-        Marionette.Region.prototype.attachHtml = function(view){
-            this.$el.hide();
-            this.$el.html(view.el);
-            this.$el.slideDown("fast");
-        };
         var Spa = Marionette.Application.extend();
         var posts = new models.Posts();
         var ContentView = Marionette.ItemView.extend({
