@@ -1,0 +1,10 @@
+{#  -*- coding: utf-8 -*- #}
+<script>
+curl(['gallery_photo'], function(setup_gallery) {
+    debugger;
+    setup_gallery(
+        {{ thumbnail_size }},
+        {{ photo_array_json }}
+    );
+});
+</script>

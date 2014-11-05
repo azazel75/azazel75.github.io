@@ -1,0 +1,37 @@
+{#  -*- coding: utf-8 -*- #}
+
+{% import 'comments_helper.tmpl' as comments %}
+{% import 'crumbs.tmpl' as ui %}
+
+{{ ui.bar(crumbs) }}   
+{% if title %}
+  <h1>{{ title }}</h1>
+{% endif %}
+{% if post %}
+  <p>
+    {{ post.text }}
+  </p>
+{% endif %}
+{% if folders %}
+  <ul>
+    {% for folder, ftitle in folders %}
+      <li><a href="{{ folder }}"><i class="glyphicon
+                                           glyphicon-folder-open"></i>&nbsp;{{ ftitle }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div id="gallery_container"></div>
+{% if photo_array %}
+<noscript>
+<ul class="thumbnails">
+    {% for image in photo_array %}
+        <li><a href="{{ image.url }}" class="thumbnail image-reference" title="{{ image.title }}">
+            <img src="{{ image.url_thumb }}" alt="{{ image.title }}" /></a>
+    {% endfor %}
+</ul>
+</noscript>
+{% endif %}
+{% if site_has_comments and enable_comments %}
+{{ comments.comment_form(None, permalink, title) }}
+{% endif %}

@@ -1,0 +1,9 @@
+{#  -*- coding: utf-8 -*- #}
+<style type="text/css">
+    .image-block {
+        display: inline-block;
+    }
+    .flowr_row {
+        width: 100%;
+    }
+</style>

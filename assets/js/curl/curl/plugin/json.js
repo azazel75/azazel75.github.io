@@ -9,60 +9,59 @@
 (function (globalEval) {
 define(/*=='curl/plugin/json',==*/ ['./_fetchText'], function (fetchText) {
 
-	var hasJsonParse, missingJsonMsg;
+    var hasJsonParse, missingJsonMsg;
 
-	hasJsonParse = typeof JSON != 'undefined' && JSON.parse;
-	missingJsonMsg = 'Cannot use strictJSONParse without JSON.parse';
+    hasJsonParse = typeof JSON != 'undefined' && JSON.parse;
+    missingJsonMsg = 'Cannot use strictJSONParse without JSON.parse';
 
-	return {
+    return {
 
-		load: function (absId, require, loaded, config) {
-			var evaluator, errback;
+        load: function (absId, require, loaded, config) {
+            var evaluator, errback;
 
-			errback = loaded['error'] || error;
+            errback = loaded['error'] || error;
 
-			// create a json evaluator function
-			if (config.strictJSONParse) {
-				if (!hasJsonParse) error(new Error(missingJsonMsg));
-				evaluator = guard(parseSource, loaded, errback);
-			}
-			else {
-				evaluator = guard(evalSource, loaded, errback);
-			}
+            // create a json evaluator function
+            evaluator = config.strictJSONParse
+                ? guard(parseSource, loaded, errback)
+                : guard(evalSource, loaded, errback);
 
-			// get the text, then eval it
-			fetchText(require['toUrl'](absId), evaluator, errback);
+            // get the text, then eval it
+            fetchText(require['toUrl'](absId), evaluator, errback);
 
-			function evalSource (source) {
-				loaded(globalEval('(' + source + ')'));
-			}
+        },
 
-			function parseSource (source) {
-				return JSON.parse(source);
-			}
+        'cramPlugin': '../cram/json'
 
-		},
+    };
 
-		'cramPlugin': '../cram/json'
+    function error (ex) {
+        throw ex;
+    }
 
-	};
+    function evalSource (source) {
+        return globalEval('(' + source + ')');
+    }
 
-	function error (ex) {
-		throw ex;
-	}
+    function parseSource (source) {
+        if (!hasJsonParse) throw new Error(missingJsonMsg);
+        return JSON.parse(source);
+    }
 
-	function guard (evaluator, success, fail) {
-		return function (source) {
-			try {
-				success(evaluator(source));
-			}
-			catch (ex) {
-				fail(ex);
-			}
-		}
-	}
+    function guard (evaluator, success, fail) {
+        return function (source) {
+            var value;
+            try {
+                value = evaluator(source);
+            }
+            catch (ex) {
+                return fail(ex);
+            }
+            return success(value);
+        }
+    }
 
 });
 }(
-	function () {/*jshint evil:true*/ return (1,eval)(arguments[0]); }
+    function () {/*jshint evil:true*/ return (1,eval)(arguments[0]); }
 ));
